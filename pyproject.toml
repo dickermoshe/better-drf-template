@@ -29,4 +29,5 @@ dependencies = [
     "sentry-sdk[django]>=2.29.1",
     "hiredis>=3.2.1",
     "django-enum>=2.2.3",
+    "django-types>=0.21.0",
 ]
