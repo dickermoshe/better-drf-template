@@ -9,7 +9,7 @@ services:
     environment:
       - MINIO_ROOT_USER=minio-root-user
       - MINIO_ROOT_PASSWORD=minio-root-password
-      - MINIO_DEFAULT_BUCKETS=backend
+      - MINIO_DEFAULT_BUCKETS=foobar
     volumes:
       - minio_storage:/bitnami/minio/data
     healthcheck:
@@ -28,7 +28,7 @@ services:
         echo 'Waiting for MinIO to be ready...'
         sleep 5
       done;
-      mc anonymous set download myminio/backend;
+      mc anonymous set download myminio/foobar;
       exit 0;
       "
   db:

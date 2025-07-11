@@ -22,4 +22,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD ["bash", "-c", "cd backend && chmod +x ./start.sh &&  ./start.sh"]
+CMD ["bash", "-c", "cd foobar && chmod +x ./start.sh &&  ./start.sh"]

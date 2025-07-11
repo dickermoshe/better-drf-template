@@ -12,11 +12,11 @@ x-base: &base
     DATABASE_URL: postgres://hello_django:hello_django@db:5432/hello_django_dev
     REDIS_URL: redis://redis:6379/0
     DEBUG: "True"
-    SECRET_KEY: backend
+    SECRET_KEY: foobar
     CORS_ALLOWED_ORIGINS: http://localhost:8110,http://localhost:8888
     CSRF_TRUSTED_ORIGINS: http://localhost:8110,http://localhost:8888
-    R2_BUCKET_NAME: backend
-    R2_DOMAIN_NAME: 127.0.0.1:9000/backend
+    R2_BUCKET_NAME: foobar
+    R2_DOMAIN_NAME: 127.0.0.1:9000/foobar
     R2_ENDPOINT_URL: http://minio:9000
     R2_URL_PROTOCOL: "http:"
     R2_KEY: minio-root-user
@@ -34,7 +34,7 @@ services:
       interval: 10s
       retries: 10
       timeout: 2s
-    command: ["bash", "-c", "cd backend && ./start.sh"]
+    command: ["bash", "-c", "cd foobar && ./start.sh"]
     depends_on:
       - minio
       - db
@@ -43,7 +43,7 @@ services:
   worker:
     <<: *base
     command:
-      ["bash", "-c", "cd backend && uv run manage.py scheduler_worker default"]
+      ["bash", "-c", "cd foobar && uv run manage.py scheduler_worker default"]
     # We should not depend on ourself
     depends_on:
       - db
