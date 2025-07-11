@@ -1,5 +1,5 @@
 """
-URL configuration for foobar project.
+URL configuration for backend project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,10 +16,19 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.http import HttpResponse
+from rest_framework.decorators import api_view
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
+
+@api_view(["GET"])
+def _health_check(request):
+    return HttpResponse("OK")
+
+
 urlpatterns = [
+    path("health/", _health_check),
     path("admin/", admin.site.urls),
     path("api/v1/", include(("api.urls", "api_v1"), namespace="v1")),
     path(
