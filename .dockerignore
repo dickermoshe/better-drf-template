@@ -33,6 +33,7 @@ env/
 venv/
 ENV/
 
+
 # IDE
 .idea/
 .vscode/
